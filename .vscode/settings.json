@@ -1,0 +1,9 @@
+{
+    "git.ignoreLimitWarning": true,
+    // 指向你的 venv 里的 python，可用 ${workspaceFolder} 自动定位
+    "python.defaultInterpreterPath": "python.defaultInterpreterPath\": \"/opt/homebrew/bin/python3",
+    // 打开终端时自动激活已选中的 Interpreter
+    "files.exclude": {
+        "**/.venv": false
+    }
+}

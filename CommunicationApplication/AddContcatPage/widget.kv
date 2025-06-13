@@ -1,0 +1,263 @@
+# 主页面
+<MainWidget>:
+
+    id: main_widget
+    FloatLayout:
+        # 加号按钮
+        Button:  
+            id: add_button
+            # 宽高比例
+            size_hint: None,None
+            # 大小
+            size: 100,100
+            # 按钮的坐标位置/相对
+            pos_hint: {'x': 0.001, 'y': 0.933}
+            # 点击按钮反馈
+            on_press: root.click_the_Add_button()
+            # 设置按钮背景颜色为白色
+            background_color: 0, 0, 0, 0
+            # 绘画指令
+            canvas:
+                Color:
+                    rgba: 0, 0, 0, 0.5 # 透明度
+                Line:
+                    width: 2
+                    points: [20, 1545, 84, 1545]  # 横线
+                Line:
+                    width: 2
+                    points: [52, 1575, 52, 1515]  # 竖线
+
+        # 文字标签
+        Label:
+            id: text_label
+            # 宽高比例
+            size_hint: None,None
+            # 大小
+            size: 100,100
+            # 标签位置/相对
+            pos_hint: {'x': 0.8, 'y': 0.93}
+            # 标签文本  
+            text: 'Contact'
+            # 标签文本颜色
+            color: 0, 0, 0, 0.7 # 透明度
+            # 加粗
+            bold: True
+            # 使用文本
+            from_name: '/Users/jean/Desktop/python/CommunicationApplication/Font/Body.otf'
+
+        Label:
+            id: botton_text
+            # 宽高比例
+            size_hint: None,None
+            # 大小
+            size: 100,100
+            # 标签位置/相对
+            pos_hint: {'x': 0.42, 'y': 0.0007}
+            # 标签文本  
+            text: 'Contact'
+            # 标签文本颜色
+            color: 0, 0, 0, 0.7 # 透明度
+            # 加粗
+            bold: True
+            # 使用文本
+            from_name: '/Users/jean/Desktop/python/CommunicationApplication/Font/Body.otf'
+            
+
+
+
+# 添加用户页面
+<AddAccount@Widget>:
+    FloatLayout:
+        # 框框
+        MDCard:
+            id: add_account_card
+            # 大小比例
+            size_hint: None,None
+            # 大小
+            size: 700,350
+            adaptive: True
+            # 位置比例
+            pos_hint: {'x':0.57,'y':6}
+            # 圆角半径
+            radius: [50, 50, 50, 50]
+            # 阴影高度
+            elevation: 0
+            
+            GridLayout:
+                # 大小比例
+                size_hint: 1,1
+                # 行列数
+                cols: 2
+                rows: 2
+
+                # 内边距
+                padding: [20, 0, 0, 0] # 左, 上, 右, 下
+                # 单元格之间的间距
+                spacing: 10
+
+
+                # Email地址输入框
+                MDTextField:
+                # 按回车触发
+                    on_text_validate: root.parent.email_verify(self.text)
+                    id: email_input
+                    # 样式
+                    mode: 'rectangle'
+                    # 大小比例
+                    size_hint: None,None
+                    # 大小
+                    size: 350, 30
+                    # 背景颜色
+                    fill_color: 0.6, 0.937, 0.871, 1
+                    text_color: 0, 0, 0, 1
+                    font_style: 'Body3'
+                    # 提示文本
+                    hint_text: 'Email Address:'
+                    # 提示文本的显示方式
+                    helper_text_mode: 'persistent'
+                    # 是否支持多行输入
+                    multiline: False
+                    # 错误状态显示颜色
+                    error_color: 1, 0.2, 0.2, 1 # 红色
+                    error: False
+                    # 获得焦点显示颜色
+                    hint_text_color_focus: 0.6, 0.937, 0.871, 1
+                    # 未获得焦点显示颜色
+                    hint_text_color_normal: 0, 0, 0, 1
+                    # 自适应
+                    adaptive_width: True
+                    adaptive_height: True
+                    # 验证器邮件格式
+                    validator: 'email'  # 只允许输入邮件格式
+                    # 限制显示区域
+                    text_size: self.size
+
+                # 发送验证码按钮
+                MDCard:
+                    id: send_code_button
+                     # 大小比例
+                    size_hint: None,None
+                    # 大小
+                    size: 200,100
+                    adaptive: True
+                    # 点击执行操作
+                    on_press: 
+                    # 圆角半径
+                    radius: [37, 37, 37, 37]
+                    # 阴影高度
+                    elevation: 1
+                    MDFlatButton:
+                        # 按钮文本
+                        text: 'Send'
+                        # 按钮大小
+                        size_hint: 1,1
+                        # 按钮文本颜色
+                        text_color: 0, 0, 0, 1 # 黑色
+                        # 按钮背景颜色
+                        md_bg_color: 0, 0, 0, 0 
+                        # 按钮位置比例
+                        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                        # 点击按钮反馈
+                        on_press: print('发送验证码')
+
+                # 验证妈输入框
+                MDTextField:
+                    # 按回车触发
+                    on_text_validate: root.parent.code_verify(self.text)
+                    id: verification_code_input
+                    # 样式
+                    mode: 'rectangle'
+                    # 大小比例
+                    size_hint: None,None
+                    # 大小
+                    size: 350, 30
+                    # 背景颜色
+                    fill_color: 0.6, 0.937, 0.871, 1
+                    text_color: 0, 0, 0, 1
+                    font_style: 'Body3'
+                    # 输入提示文本
+                    hint_text: 'Verification Code:'
+                    # 提示文本的显示方式
+                    helper_text_mode: 'persistent'
+                    # 是否支持多行输入
+                    multiline: False
+                    # 错误状态显示颜色
+                    error_color: 1, 0.2, 0.2, 1 # 红色
+                    error: True
+                    # 获得焦点显示颜色
+                    hint_text_color_focus: 0.6, 0.937, 0.871, 1
+                    # 未获得焦点显示颜色
+                    hint_text_color_normal: 0, 0, 0, 1
+                    # 自适应
+                    adaptive_width: True
+                    adaptive_height: True
+                    # 验证器数字格式
+                    input_filter: 'int'  # 只允许输入数字
+                    # 限制显示区域
+                    text_size: self.size
+
+
+
+      
+
+
+               
+
+
+
+
+
+
+
+
+
+# 聊天框和头像'一体'控件
+<ChatBox@MDCard>:
+    # 聊天框
+    MDCard:
+        # 宽高比例
+        size_hint: None,None
+        # 大小
+        size: 570,130
+        # 自动调整
+        adpative_height: True
+        # 位置比例
+        pos_hint: {'x':0.26,'y':0.8}
+        # 圆角半径
+        radius: [50, 50, 50, 50]
+        # 阴影高度
+        elevation: 1.9
+        
+        # 内容
+        MDLabel:
+            text: 'HI,How can i help to you??'
+            # 文字大小
+            font_size: '15sp'
+            # 文字粗细
+            font_style: 'Body1'
+            # 自适应
+            adpative_width: True
+            adpative_height: True
+            # 位置
+            halign: 'center' 
+            valign: 'middle' 
+            # 确保在聊天框内
+            text_size: self.size
+
+    # 分隔线
+    canvas:
+        Color:
+            rgba:0, 0, 0, 1
+        Line:
+            width: 1
+            points: [self.x-15, self,y-10, self.right+10, self.y-10] 
+
+
+
+
+                
+
+
+
+
+

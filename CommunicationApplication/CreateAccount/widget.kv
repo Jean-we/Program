@@ -1,0 +1,92 @@
+# 绑定Page类实例
+<Page>:
+    RelativeLayout:
+        # 创建用户
+        MDCard:
+            id: create_account_card
+            # 卡片大小
+            size_hint: 0.27,0.07
+            # 相对于整个窗口的相对位置
+            pos_hint: {'center_x':0.27,'center_y':0.09}
+            # 圆角半径
+            radius: [30, 30, 30, 30]
+            # 卡片背景颜色
+            md_bg_color: 0, 1, 0.502, 1 # Green
+            # 透明度
+            opacity: 1
+            # 按钮
+            MDFlatButton:
+                id: create_account_button
+                # 透明度
+                opacity: 1
+                # 按钮文本
+                text: 'Create Account'
+                # 按钮大小
+                size_hint: 1,1
+                # 按钮文本颜色
+                text_color: 0, 0, 0, 1 # 黑色
+                # 按钮背景颜色
+                md_bg_color: 0, 0, 0, 0 
+                # 按钮位置比例
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                # 点击按钮反馈
+                on_press: root.add_account_action()
+
+        # 登录用户
+        MDCard:
+            id: login_account_card
+            # 卡片大小
+            size_hint: 0.27,0.07
+            # 相对于整个窗口的相对位置
+            pos_hint: {'center_x':0.73,'center_y':0.09}
+            # 圆角半径
+            radius: [30, 30, 30, 30]
+            # 卡片背景颜色
+            md_bg_color: 0, 1, 0.502, 1 # green
+            # 透明度
+            opacity: 1
+            # 按钮
+            MDFlatButton:
+                id: login_button
+                # 透明度
+                opacity: 1
+                # 按钮文本
+                text: 'Log in'
+                # 按钮大小
+                size_hint: 1,1
+                # 按钮文本颜色
+                text_color: 0, 0, 0, 1 # 黑色
+                # 按钮背景颜色
+                md_bg_color: 0, 0, 0, 0 
+                # 按钮位置比例
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                # 点击按钮反馈
+                on_press: root.add_account_action()
+
+
+# 添加用户输入框
+<InputAddAccount>:
+    RelativeLayout:
+        # 用户名输入框
+        TextInput:
+            id: username
+            # 输入框背景颜色
+            background_color: 1, 1, 1, 0.54 # white
+            # 输入框大小
+            size_hint: 0.27, 0.07
+            # 输入框位置
+            pos_hint: {'center_x': 0.27, 'center_y': 0.5}
+            # 输入框提示文本
+            hint_text: 'Username'
+        
+        # 密码输入框
+        TextInput:
+            id: password
+            # 输入框背景颜色
+            background_color: 1, 1, 1, 0.54 # white
+            # 输入框大小
+            size_hint: 0.27, 0.07
+            # 输入框位置
+            pos_hint: {'center_x': 0.73, 'center_y': 0.5}
+            # 输入框提示文本
+            hint_text: 'Password'
